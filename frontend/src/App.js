@@ -1,11 +1,13 @@
 import React from "react";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Citizen Report Tracker</h1>
-      <p>Frontend setup successful.</p>
-    </div>
+    <>
+      <Navbar />
+      <Home />
+    </>
   );
 }
 
