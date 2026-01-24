@@ -1,30 +1,40 @@
 import React, { useState } from "react";
+import api from "../api/axiosConfig";
 
 export default function SubmitReport() {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    category: ""
+    category: "traffic"
   });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    await api.post("reports/", form);
+    alert("Report submitted!");
+  };
 
   return (
     <div style={{ padding: "1rem" }}>
       <h2>Submit a Report</h2>
 
-      <input placeholder="Title" />
+      <input name="title" placeholder="Title" onChange={handleChange} />
       <br /><br />
 
-      <textarea placeholder="Description"></textarea>
+      <textarea name="description" placeholder="Description" onChange={handleChange} />
       <br /><br />
 
-      <select>
-        <option>Traffic</option>
-        <option>Road Damage</option>
-        <option>Crime</option>
+      <select name="category" onChange={handleChange}>
+        <option value="traffic">Traffic</option>
+        <option value="road">Road Damage</option>
+        <option value="crime">Crime</option>
       </select>
 
       <br /><br />
-      <button>Submit</button>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }
