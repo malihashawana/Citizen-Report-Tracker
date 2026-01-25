@@ -10,7 +10,8 @@ def home(request):
 urlpatterns = [
     path('', home),  # <-- root URL
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
+    path('api/', include('reports.urls')),   # ✅ THIS enables /api/reports/
+    path('api/ai/', include('ai.urls')), 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

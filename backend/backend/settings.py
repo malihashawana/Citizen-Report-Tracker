@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'reports',
     'api',
     'corsheaders',
+    'ai',
 ]
 
 MIDDLEWARE = [
